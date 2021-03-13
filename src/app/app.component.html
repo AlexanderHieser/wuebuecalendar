@@ -1,0 +1,19 @@
+<div class="p-grid">
+  <div class="p-col-2"></div>
+  <div class="p-col-8">
+    <p-card header="Müllkalender export" subheader="Würzburg"  styleClass="p-card-shadow">
+      <ng-template pTemplate="header" style="height: 150px;" >
+          <img  src="assets/pattern.jpg" [style]="{'height':'150px'}" style="object-fit: cover;">
+      </ng-template>
+      <!-- <h5>Wähle deinen Standort</h5>
+      <p-listbox [options]="locations" [filter]="true" [(ngModel)]="selectedLocation" optionLabel="name" [listStyle]="{'max-height':'150px'}" ></p-listbox> -->
+      <h5>Wähle deine Straße</h5>
+      <p-listbox [options]="streetData" [filter]="true"  [(ngModel)]="selectedStreet" optionLabel="name" [listStyle]="{'max-height':'300px'}" ></p-listbox>
+      <ng-template pTemplate="footer">
+          <p-button (click)="getEvents()" label="Kalender download" icon="pi pi-check"></p-button>
+      </ng-template>
+  </p-card>
+  
+  </div>
+  <div class="p-col-2"></div>
+</div>
