@@ -114,14 +114,14 @@ export class AppComponent {
 
   download(filename, data) {
     var element = document.createElement('a');
-    element.setAttribute('href', 'data:text/calender;charset=utf8,' + encodeURIComponent(data));
-    element.setAttribute('download', filename);
+    window.open('data:text/calendar;charset=utf8,' + escape(data));
+    // element.setAttribute('download', filename);
   
-    element.style.display = 'none';
-    document.body.appendChild(element);
+    // element.style.display = 'none';
+    // document.body.appendChild(element);
   
-    element.click();
+    // element.click();
   
-    document.body.removeChild(element);
+    // document.body.removeChild(element);
   }
 }
