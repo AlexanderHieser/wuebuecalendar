@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CardModule } from 'primeng/card'
 import { ButtonModule } from 'primeng/button'
 import { ListboxModule } from 'primeng/listbox'
+import { DialogModule } from 'primeng/dialog'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
@@ -23,7 +24,8 @@ import { HttpClientModule} from '@angular/common/http';
     ListboxModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

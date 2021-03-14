@@ -29,7 +29,7 @@ export class AppComponent {
   streetData:Street[] = streets['default'];
   events: any[];
   selectedStreet: Street;
-
+  display = false;
 
   /* 
     <option value="" selected>Alle Standorte</option>
@@ -77,6 +77,8 @@ export class AppComponent {
   }
 
   getEvents() {
+    if(this.selectedStreet) {
+
     let params = {
       '_func' :'evList',
       '_mod':'events',
@@ -109,6 +111,9 @@ export class AppComponent {
       this.downloadBlob(this.selectedStreet.name+'-2021'+'.ics',value.value);
 
     });
+  }else {
+    this.display = true;
+  }
     
   }
 downloadBlob (file_name, content) {
