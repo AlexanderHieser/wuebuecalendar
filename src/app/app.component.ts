@@ -106,15 +106,32 @@ export class AppComponent {
       const value = ics.createEvents(this.events);
       console.log(value);
       
-      this.download(this.selectedStreet.name+'-2021'+'.ics',value.value);
+      this.downloadBlob(this.selectedStreet.name+'-2021'+'.ics',value.value);
 
     });
     
   }
+downloadBlob (file_name, content) {
+    var csvData = new Blob([content], { type: 'text/calendar' });
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) { // for IE
+        window.navigator.msSaveOrOpenBlob(csvData, file_name);
+    } else { // for Non-IE (chrome, firefox etc.)
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        var csvUrl = URL.createObjectURL(csvData);
+        a.href =  csvUrl;
+        a.download = file_name;
+        a.click();
+        URL.revokeObjectURL(a.href)
+        a.remove();
+    }
+};
 
   download(filename, data) {
     var element = document.createElement('a');
-    window.open('data:text/calendar;charset=utf8,' + escape(data));
+    var blob = new Blob([data], { type: 'text/calendar;charset=utf-8' });
+    window.navigator.msSaveOrOpenBlob(blob, filename+'-download.ics');
+    
     // element.setAttribute('download', filename);
   
     // element.style.display = 'none';
