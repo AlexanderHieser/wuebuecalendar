@@ -4,9 +4,8 @@
 }
 
 .pattern {
-    background-size: 100px;
+    background-size: 256px;
     background-color: alpha($color: #d6d6d6);
-    background-repeat: space;
     background-image:
       url('../assets/Pattern.png');
   }
