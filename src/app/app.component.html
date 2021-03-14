@@ -1,24 +1,29 @@
-<div class="p-grid">
-  <div class="p-col-1"></div>
-  <div class="p-col-10">
-    <p-card header="Abfallkalender iCal export" subheader="Würzburg" styleClass="p-card-shadow">
-      <ng-template pTemplate="header" style="height: 100px;">
-        <img alt="Abfallkalender Download" src="assets/pattern.jpg" [style]="{'height':'100px'}"
-          style="object-fit: cover;">
-      </ng-template>
-      <p>Hallo das ist ein kleines Tool zum Download the Würzburger Abfallkalenders als *.ics Datei für PC & Mobil</p>
-      <h5>Wähle deine Straße</h5>
-      <p-listbox filterPlaceHolder="Suche" [options]="streetData" [filter]="true" [(ngModel)]="selectedStreet"
-        optionLabel="name" [listStyle]="{'max-height':'250px'}"></p-listbox>
-      <ng-template pTemplate="footer">
-        <button pButton class="p-button-success" [style]="{'width':'100%'}" (click)="getEvents()"
-          label="Kalender download" icon="pi pi-cloud-download"></button>
-      </ng-template>
-    </p-card>
-  </div>
-  <div class="p-col-1"></div>
-</div>
+<div class="background-container">
 
-<p-dialog header="Ups..." [(visible)]="display">
-  <p>Keine Straße ausgewählt!</p>
-</p-dialog>
+  <div class="p-grid" >
+    <div class="p-col-1"></div>
+    <div class="p-col-10">
+      <p-card header="Abfallkalender iCal export" subheader="Würzburg" styleClass="p-card-shadow">
+        <ng-template pTemplate="header" style="height: 200px;" >
+          <div class="pattern" style="height: 200px;">
+
+          </div>
+       
+        </ng-template>
+        <p>Hier könnt ihr den für euch passenden Abfallkalender als *.ics Datei herunterladen und in eurem Kalender ( PC / Mobil ) speichern.</p>
+        <h5>Wähle deine Straße</h5>
+        <p-listbox filterPlaceHolder="Suche" [options]="streetData" [filter]="true" [(ngModel)]="selectedStreet"
+        optionLabel="name" [listStyle]="{'max-height':'250px'}"></p-listbox>
+        <ng-template pTemplate="footer">
+          <button pButton class="p-button-success" [style]="{'width':'100%'}" (click)="getEvents()"
+          label="Abfallkalender herunterladen" icon="pi pi-cloud-download"></button>
+        </ng-template>
+      </p-card>
+    </div>
+    <div class="p-col-1"></div>
+  </div>
+  
+  <p-dialog header="Ups..." [(visible)]="display">
+    <p>Keine Straße ausgewählt!</p>
+  </p-dialog>
+</div>
