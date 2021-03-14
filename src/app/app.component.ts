@@ -32,8 +32,12 @@ export class AppComponent {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Get events from API
+   */
   getEvents() {
     if (this.selectedStreet) {
+      // Setup query params
       let params = {
         '_func': 'evList',
         '_mod': 'events',
@@ -45,6 +49,9 @@ export class AppComponent {
         '_m': '01',
       }
 
+      /**
+       * Make request for selected street
+       */
       this.http.get('https://www.wuerzburg.de/themen/umwelt-verkehr/vorsorge-entsorgung/abfallkalender/index.html', { params: params }).subscribe((data) => {
         console.log(data);
         let keys = Object.keys(data['contents']);
@@ -70,6 +77,11 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Create Download 
+   * @param file_name Filename
+   * @param content ICS COntent
+   */
   downloadBlob(file_name, content) {
     var csvData = new Blob([content], { type: 'text/calendar' });
     if (window.navigator && window.navigator.msSaveOrOpenBlob) { // for IE
