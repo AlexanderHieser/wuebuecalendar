@@ -41,11 +41,11 @@ export class AppComponent {
       let params = {
         '_func': 'evList',
         '_mod': 'events',
-        'ev[start]': '2021-01-01',
-        'ev[end]': '2021-12-31',
+        'ev[start]': '2022-01-01',
+        'ev[end]': '2022-12-31',
         'ev[addr]': this.selectedStreet.value,
         'ev[search]': '',
-        '_y': '2021',
+        '_y': '2022',
         '_m': '01',
       }
 
@@ -65,12 +65,20 @@ export class AppComponent {
             start: jsonData.start.split(' ')[0].split('-'),
             end: jsonData.start.split(' ')[0].split('-'),
           }
+         let start =  set.start.map((s) => {
+            return Number(s);
+          })
+          let end =  set.end.map((s) => {
+            return Number(s);
+          })
+          set.start = start;
+          set.end = end;
           this.events.push(set);
         });
         console.log("Events", this.events);
         const value = ics.createEvents(this.events);
         console.log(value);
-        this.downloadBlob(this.selectedStreet.name + '-2021' + '.ics', value.value);
+        this.downloadBlob(this.selectedStreet.name + '-2022' + '.ics', value.value);
       });
     } else {
       this.display = true;
@@ -84,9 +92,7 @@ export class AppComponent {
    */
   downloadBlob(file_name, content) {
     var csvData = new Blob([content], { type: 'text/calendar' });
-    if (window.navigator && window.navigator.msSaveOrOpenBlob) { // for IE
-      window.navigator.msSaveOrOpenBlob(csvData, file_name);
-    } else { // for Non-IE (chrome, firefox etc.)
+  // for Non-IE (chrome, firefox etc.)
       var a = document.createElement("a");
       document.body.appendChild(a);
       var csvUrl = URL.createObjectURL(csvData);
@@ -95,6 +101,5 @@ export class AppComponent {
       a.click();
       URL.revokeObjectURL(a.href)
       a.remove();
-    }
   };
 }
