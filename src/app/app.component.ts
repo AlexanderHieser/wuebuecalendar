@@ -41,11 +41,11 @@ export class AppComponent {
       let params = {
         '_func': 'evList',
         '_mod': 'events',
-        'ev[start]': '2023-01-01',
-        'ev[end]': '2023-12-31',
+        'ev[start]': '2024-01-01',
+        'ev[end]': '2024-12-31',
         'ev[addr]': this.selectedStreet.value,
         'ev[search]': '',
-        '_y': '2023',
+        '_y': '2024',
         '_m': '01',
       }
 
@@ -78,7 +78,7 @@ export class AppComponent {
         console.log("Events", this.events);
         const value = ics.createEvents(this.events);
         console.log(value);
-        this.downloadBlob(this.selectedStreet.name + '-2023' + '.ics', value.value);
+        this.downloadBlob(this.selectedStreet.name + '-2024' + '.ics', value.value);
       });
     } else {
       this.display = true;
